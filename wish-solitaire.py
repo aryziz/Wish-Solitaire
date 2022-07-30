@@ -85,7 +85,6 @@ def win(card):
 def save(card):
     user_input = input("Are you sure you want to save? (y/n): ").lower()
     if user_input == "y":
-        #file_name = input("Filename: ")
         file_name = "wish-solitaire"
         pickle.dump(card, open(file_name+'.p', 'wb'))
         print("Executed. The files name: wish-solitaire.p")
@@ -111,7 +110,7 @@ def start(card):
             break
         else:
             try:
-                spill_layout(card)
+                game_layout(card)
             except:
                 print("Oops! Something went wrong, try again.")
                 break
@@ -132,7 +131,7 @@ def start(card):
                     start(card)
 
 
-def spill_layout(card):
+def game_layout(card):
     for index, item in enumerate(card):
         if len(item) > 0:
             print("{:>2}".format(letters[index]), end="\t")
@@ -151,7 +150,7 @@ def spill_layout(card):
         if len(item) > 0:
             print("{:>2}".format(f"{len(item[0:])}"), end="\t")
         else:
-            print("Tom", end="\t")
+            print("X", end="\t")
 
 
 def load():
